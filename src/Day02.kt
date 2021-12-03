@@ -12,11 +12,6 @@ fun main() {
         return depth * horiz
     }
 
-    fun part1grouped(input: List<Pair<String, Int>>): Int {
-        val grouped = input.groupBy({ it.first }, { it.second }).mapValues { it.value.sum() }
-        return grouped.getOrDefault("forward", 0) * (grouped.getOrDefault("down", 0) - grouped.getOrDefault("up", 0))
-    }
-
     fun part2(input: List<Pair<String, Int>>): Int {
         var depth = 0
         var horiz = 0
