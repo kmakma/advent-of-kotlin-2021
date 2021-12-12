@@ -55,6 +55,7 @@ fun main() {
             .let { scores -> scores[scores.size / 2 ] }
     }
 
+    // TODO Idea: find all bracket pairs and replace them with empty string
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day10_test")
     check(part1(testInput) == 26397)

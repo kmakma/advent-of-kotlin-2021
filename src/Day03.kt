@@ -1,11 +1,12 @@
+import kotlin.system.measureNanoTime
+
 fun main() {
     fun part1(input: List<String>): Int {
         val binaries = input.map { it.toList().map { c -> c.digitToInt() } }
         val counted = binaries.reduce { acc, next -> acc.zip(next) { a, n -> a + n } }
-        val gammaRate =
-            Integer.parseInt(counted.map { count -> if (count > input.size - count) '1' else '0' }.joinToString(""), 2)
+        val gammaRate = counted.map { count -> if (count > input.size - count) '1' else '0' }.joinToString("").toInt(2)
         val epsilonRate =
-            Integer.parseInt(counted.map { count -> if (count < input.size - count) '1' else '0' }.joinToString(""), 2)
+            counted.map { count -> if (count < input.size - count) '1' else '0' }.joinToString("").toInt(2)
         return gammaRate * epsilonRate
     }
 
@@ -45,6 +46,6 @@ fun main() {
     check(part2(testInput) == 230)
 
     val input = readInput("Day03")
-    println(part1(input))
-    println(part2(input))
+    println("time:" + measureNanoTime { println(part1(input)) } + "ns")
+    println("time:" + measureNanoTime { println(part2(input)) } + "ns")
 }
